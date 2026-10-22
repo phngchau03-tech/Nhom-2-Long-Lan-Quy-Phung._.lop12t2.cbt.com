@@ -23,38 +23,170 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8 flex-grow">
 
-        <!-- TAB 1: GIỚI THIỆU THÀNH VIÊN -->
-        <section id="tab-members" class="space-y-6">
-            <div class="text-center">
-                <h2 class="text-3xl font-bold text-gray-800">Thành Viên Nhóm</h2>
-                <p class="text-gray-600 mt-2">Danh sách các thành viên đóng góp trong dự án.</p>
-            </div>
-            
-            <!-- Danh sách thành viên (Ví dụ 3 thành viên) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <!-- Member 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                    <img src="https://via.placeholder.com/150" alt="Avatar" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-indigo-500">
-                    <h3 class="text-xl font-semibold">Nguyễn Văn A</h3>
-                    <p class="text-indigo-600 font-medium">Nhóm trưởng / Lập trình viên</p>
-                    <p class="text-gray-500 text-sm mt-2">Chịu trách nhiệm phát triển giao diện và logic trang web.</p>
-                </div>
-                <!-- Member 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                    <img src="https://via.placeholder.com/150" alt="Avatar" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-indigo-500">
-                    <h3 class="text-xl font-semibold">Trần Thị B</h3>
-                    <p class="text-indigo-600 font-medium">Thiết kế & Nội dung</p>
-                    <p class="text-gray-500 text-sm mt-2">Chịu trách nhiệm ý tưởng thiết kế và nội dung bài tập.</p>
-                </div>
-                <!-- Member 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                    <img src="https://via.placeholder.com/150" alt="Avatar" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-indigo-500">
-                    <h3 class="text-xl font-semibold">Lê Văn C</h3>
-                    <p class="text-indigo-600 font-medium">Thành viên</p>
-                    <p class="text-gray-500 text-sm mt-2">Hỗ trợ thu thập tài nguyên và kiểm thử ứng dụng.</p>
-                </div>
-            </div>
-        </section>
+        <!-- GIỚI THIỆU THÀNH VIÊN -->
+       <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu Thành Viên Nhóm</title>
+    <style>
+        /* Reset cơ bản & Font chữ sạch sẽ */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: #111827;
+            line-height: 1.5;
+            padding: 40px 20px;
+        }
+
+        /* Tiêu đề trang */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: -0.5px;
+        }
+
+        /4 thành viên/
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Thẻ thông tin */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Ảnh đại diện */
+        .avatar {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #f3f4f6;
+            margin-bottom: 16px;
+        }
+
+        /* Họ và tên */
+        .name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        /* Vai trò / Chức vụ */
+        .role {
+            font-size: 13px;
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        /* Mô tả ngắn */
+        .bio {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 20px;
+            flex-grow: 1; /* Đảm bảo nút Email luôn thẳng hàng ở đáy card */
+        }
+
+        /* Email liên hệ */
+        .email {
+            font-size: 13px;
+            color: #4b5563;
+            text-decoration: none;
+            word-break: break-all;
+            padding-top: 12px;
+            border-top: 1px solid #f3f4f6;
+            width: 100%;
+        }
+
+        .email:hover {
+            color: #2563eb;
+        }
+
+        /* Co giãn linh hoạt cho các kích thước màn hình (Responsive) */
+        @media (max-width: 960px) {
+            .member-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 cột trên Tablet */
+            }
+        }
+
+        @media (max-width: 560px) {
+            .member-grid {
+                grid-template-columns: 1fr; /* 1 cột trên Điện thoại */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TIÊU ĐỀ -->
+    <div class="header">
+        <h1>Thành Viên Nhóm</h1>
+    </div>
+
+    <!-- DANH SÁCH 4 THÀNH VIÊN -->
+    <div class="member-grid">
+
+        <!-- THÀNH VIÊN 1 -->
+        <div class="card">
+            <img src="https://placehold.co/100x100/e5e7eb/6b7280?text=TV+1" alt="Ảnh đại diện" class="avatar">
+            <h2 class="name">Võ Thị Kim Duyên</h2>
+            <p class="role">Trưởng nhóm</p>
+            <p class="bio">Number 3</p>
+            <a href="mailto:thanhvien1@email.com" class="email">thanhvien1@email.com</a>
+        </div>
+
+        <!-- THÀNH VIÊN 2 -->
+        <div class="card">
+            <img src="https://placehold.co/100x100/e5e7eb/6b7280?text=TV+2" alt="Ảnh đại diện" class="avatar">
+            <h2 class="name">Lê Thanh Trúc</h2>
+            <p class="role">Nhóm trưởng/UX</p>
+            <p class="bio">Number 16</p>
+            <a href="mailto:2@email.com" class="email">2@email.com</a>
+        </div>
+
+        <!-- THÀNH VIÊN 3 -->
+        <div class="card">
+            <img src="https://placehold.co/100x100/e5e7eb/6b7280?text=TV+3" alt="Ảnh đại diện" class="avatar">
+            <h2 class="name">Phạm Ngọc Châu</h2>
+            <p class="role">Nhóm trưởng</p>
+            <p class="bio">Number 2</p>
+            <a href="mailto:chau@email.com" class="email">chau@email.com</a>
+        </div>
+
+        <!-- THÀNH VIÊN 4 -->
+        <div class="card">
+         <img src="https://placehold.co/100x100/e5e7eb/6b7280?text=TV+4" alt="Ảnh đại diện" class="avatar">
+            <h2 class="name">Đoàn Xuân Tỷ</h2>
+            <p class="role">Nhóm trưởng</p>
+            <p class="bio">Number 18.</p>
+            <a href="mailto:doanxty@gmail.com" class="email">doanxty@gmail.com</a>
+        </div>
+
 
         <!-- TAB 2: UPLOAD & QUẢN LÝ BÀI TẬP -->
         <section id="tab-assignments" class="hidden space-y-8">
