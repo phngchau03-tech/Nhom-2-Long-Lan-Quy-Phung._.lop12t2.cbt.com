@@ -1,0 +1,276 @@
+
+<style>
+/* Trang luyện tập bầu trời xanh */
+.bau-troi-page {
+    position: relative;
+    min-height: 90vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 65px 20px 110px;
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: linear-gradient(
+        180deg,
+        #65c8ff 0%,
+        #a8e4ff 55%,
+        #e1f8ff 100%
+    );
+    color: #174b70;
+    isolation: isolate;
+}
+
+.bau-troi-page * {
+    box-sizing: border-box;
+}
+
+.bau-troi-page .mat-troi {
+    position: absolute;
+    top: 28px;
+    right: 9%;
+    width: 95px;
+    height: 95px;
+    background: #ffdc45;
+    border-radius: 50%;
+    box-shadow: 0 0 0 12px #ffdc4540,
+                0 0 38px #fff0a8;
+    z-index: -1;
+}
+
+.bau-troi-page .may {
+    position: absolute;
+    width: 125px;
+    height: 38px;
+    border-radius: 40px;
+    background: #fff;
+    box-shadow: 0 7px 16px #398ec522;
+    z-index: -1;
+}
+
+.bau-troi-page .may::before,
+.bau-troi-page .may::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.bau-troi-page .may::before {
+    width: 58px;
+    height: 58px;
+    left: 19px;
+    bottom: 8px;
+}
+
+.bau-troi-page .may::after {
+    width: 43px;
+    height: 43px;
+    right: 19px;
+    bottom: 5px;
+}
+
+.bau-troi-page .may-1 {
+    top: 100px;
+    left: 7%;
+}
+
+.bau-troi-page .may-2 {
+    top: 185px;
+    right: 7%;
+    transform: scale(.8);
+}
+
+.bau-troi-page .may-3 {
+    top: 35px;
+    left: 36%;
+    transform: scale(.65);
+}
+
+.bau-troi-page .nhan-trang {
+    display: inline-block;
+    padding: 9px 20px;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    background: #ffffffbb;
+    color: #2874a6;
+    font-weight: bold;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 12px #286c9220;
+}
+
+.bau-troi-page .tieu-de {
+    margin: 22px auto;
+    color: #fff;
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.25;
+    font-weight: 900;
+    text-shadow: 2px 4px 0 #2988c9,
+                 0 5px 14px #2674a655;
+}
+
+.bau-troi-page .khung-noi-dung {
+    position: relative;
+    width: min(720px, 100%);
+    margin: 30px auto;
+    padding: 35px 28px;
+    border: 3px solid #fff;
+    border-radius: 28px;
+    background: #ffffffdf;
+    box-shadow: 0 15px 35px #176a9630;
+}
+
+.bau-troi-page .bieu-tuong {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.bau-troi-page .loi-nhan {
+    margin: 0;
+    color: #245779;
+    font-size: clamp(19px, 3vw, 25px);
+    line-height: 1.8;
+    font-weight: 700;
+}
+
+.bau-troi-page .trang-tri {
+    margin: 18px 0 0;
+    color: #e9a900;
+    font-size: 25px;
+    letter-spacing: 7px;
+}
+
+.bau-troi-page .nut-tai-lieu {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 25px;
+    border: 3px solid #fff;
+    border-radius: 40px;
+    background: #ffcf3f;
+    color: #604500;
+    font-size: 17px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 6px 0 #e6a922;
+    transition: transform .2s, background .2s;
+}
+
+.bau-troi-page .nut-tai-lieu:hover {
+    background: #ffe477;
+    transform: translateY(-3px);
+}
+
+.bau-troi-page .loi-nho {
+    margin-top: 22px;
+    color: #286b8c;
+    font-size: 15px;
+}
+
+.bau-troi-page .dong-co {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: #55b957;
+    border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+    z-index: -1;
+}
+
+.bau-troi-page .dong-co::before {
+    content: "🌼  🌷  🌻  🌼  🌻  🌷  🌼  🌻  🌼";
+    position: absolute;
+    top: -27px;
+    left: 0;
+    width: 100%;
+    font-size: 25px;
+    letter-spacing: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.bau-troi-page .co-trang-tri {
+    position: absolute;
+    bottom: 12px;
+    left: 5%;
+    font-size: 38px;
+}
+
+.bau-troi-page .co-ben-phai {
+    left: auto;
+    right: 5%;
+}
+
+@media (max-width: 600px) {
+    .bau-troi-page {
+        padding: 55px 15px 105px;
+    }
+
+    .bau-troi-page .mat-troi {
+        width: 65px;
+        height: 65px;
+        right: 5%;
+    }
+
+    .bau-troi-page .may-2 {
+        top: 160px;
+    }
+
+    .bau-troi-page .khung-noi-dung {
+        padding: 27px 18px;
+    }
+
+    .bau-troi-page .dong-co::before {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+}
+</style>
+
+<section class="bau-troi-page">
+
+    <!-- Mặt trời và những đám mây -->
+    <div class="mat-troi"></div>
+    <div class="may may-1"></div>
+    <div class="may may-2"></div>
+    <div class="may may-3"></div>
+
+    <!-- HOC HOC NUA HOC MAI -->
+    <div class="nhan-trang">GÓC HỌC TẬP CỦA CHÚNG MÌNH</div>
+
+    <h1 class="tieu-de">
+        ☀️ Cùng nhau ôn tập! ☀️
+    </h1>
+
+    <!-- Nội dung chính -->
+    <div class="khung-noi-dung">
+
+        <div class="bieu-tuong">📚 🌻 ✏️</div>
+
+        <p class="loi-nhan">
+            Để ghi nhớ kiến thức, chúng mình đã làm các
+            luyện tập vận dụng của các bài đã học.
+        </p>
+
+        <div class="trang-tri">
+            ✿ ❀ ✿ ❀ ✿
+        </div>
+
+        <a
+            class="nut-tai-lieu"
+            href="https://docs.google.com/document/d/15VbcyLwMGOOt-Fgde2Qbwn6IhjcruzcBkzWHejPtHu8/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer">
+            📖 Xem tài liệu luyện tập
+        </a>
+
+        <p class="loi-nho">
+            🌈 Chăm chỉ học tập – Cùng nhau tiến bộ! 🌈
+        </p>
+
+    </div>
+
+    <!-- Đồng cỏ và hoa vàng -->
+    <div class="dong-co"></div>
+    <div class="co-trang-tri">🌱🌼🌿</div>
+    <div class="co-trang-tri co-ben-phai">🌿🌼🌱</div>
+
+</section>
