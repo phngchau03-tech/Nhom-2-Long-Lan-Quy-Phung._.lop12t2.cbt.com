@@ -157,7 +157,7 @@
             <h2 class="name">Võ Thị Kim Duyên</h2>
             <p class="role">Trưởng nhóm</p>
             <p class="bio">Number 3</p>
-            <a href="mailto:thanhvien1@email.com" class="email">thanhvien1@email.com</a>
+            <a href="kimduyen090513@gmail.com" class="gmail">kimduyen090513@gmail.com</a>
         </div>
 
         <!-- THÀNH VIÊN 2 -->
@@ -166,7 +166,7 @@
             <h2 class="name">Lê Thanh Trúc</h2>
             <p class="role">Nhóm trưởng/UX</p>
             <p class="bio">Number 16</p>
-            <a href="mailto:2@email.com" class="email">2@email.com</a>
+            <a href="lethanhtrucbt09@gmail.com" class="lethanhtrucbt09@gmail.com</a>
         </div>
 
         <!-- THÀNH VIÊN 3 -->
@@ -175,7 +175,7 @@
             <h2 class="name">Phạm Ngọc Châu</h2>
             <p class="role">Nhóm trưởng</p>
             <p class="bio">Number 2</p>
-            <a href="mailto:chau@email.com" class="email">chau@email.com</a>
+            <a href="phngchau03@gmail.com" class="gmail">phngchau03@gmail.com</a>
         </div>
 
         <!-- THÀNH VIÊN 4 -->
