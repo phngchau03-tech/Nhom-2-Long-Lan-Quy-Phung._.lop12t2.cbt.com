@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Nhóm & Quản Lý Bài Tập</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+
+    <!-- Header & Navigation -->
+    <header class="bg-indigo-600 text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Portal Nhóm Học Tập</h1>
+            <nav class="space-x-4">
+                <button onclick="switchTab('members')" id="btn-members" class="px-4 py-2 rounded-lg bg-indigo-700 font-medium transition">Thành Viên</button>
+                <button onclick="switchTab('assignments')" id="btn-assignments" class="px-4 py-2 rounded-lg hover:bg-indigo-700 font-medium transition">Nộp Bài Tập</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 flex-grow">
+
+        <!-- TAB 1: GIỚI THIỆU THÀNH VIÊN -->
+        <section id="tab-members" class="space-y-6">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-800">Thành Viên Nhóm</h2>
+                <p class="text-gray-600 mt-2">Danh sách các thành viên đóng góp trong dự án.</p>
+            </div>
+            
+            <!-- Danh sách thành viên (Ví dụ 3 thành viên) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                <!-- Member 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <img src="https://via.placeholder.com/150" alt="Avatar" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-indigo-500">
+                    <h3 class="text-xl font-semibold">Nguyễn Văn A</h3>
+                    <p class="text-indigo-600 font-medium">Nhóm trưởng / Lập trình viên</p>
+                    <p class="text-gray-500 text-sm mt-2">Chịu trách nhiệm phát triển giao diện và logic trang web.</p>
+                </div>
+                <!-- Member 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <img src="https://via.placeholder.com/150" alt="Avatar" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-indigo-500">
+                    <h3 class="text-xl font-semibold">Trần Thị B</h3>
+                    <p class="text-indigo-600 font-medium">Thiết kế & Nội dung</p>
+                    <p class="text-gray-500 text-sm mt-2">Chịu trách nhiệm ý tưởng thiết kế và nội dung bài tập.</p>
+                </div>
+                <!-- Member 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <img src="https://via.placeholder.com/150" alt="Avatar" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-indigo-500">
+                    <h3 class="text-xl font-semibold">Lê Văn C</h3>
+                    <p class="text-indigo-600 font-medium">Thành viên</p>
+                    <p class="text-gray-500 text-sm mt-2">Hỗ trợ thu thập tài nguyên và kiểm thử ứng dụng.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: UPLOAD & QUẢN LÝ BÀI TẬP -->
+        <section id="tab-assignments" class="hidden space-y-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-800">Kho Bài Tập Nhóm</h2>
+                <p class="text-gray-600 mt-2">Đăng tải, chỉnh sửa và xem lại các bài tập đã nộp.</p>
+            </div>
+
+            <!-- Form Thêm / Chỉnh sửa Bài Tập -->
+            <div class="bg-white p-6 rounded-xl shadow-md max-w-2xl mx-auto">
+                <h3 id="form-title" class="text-xl font-semibold mb-4 text-indigo-600">Thêm Bài Tập Mới</h3>
+                <form id="assignment-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <input type="hidden" id="edit-index" value="">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Tên bài tập / Tiêu đề</label>
+                        <input type="text" id="title" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Tên thành viên nộp</label>
+                        <input type="text" id="author" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Mô tả chi tiết</label>
+                        <textarea id="description" rows="3" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Tải ảnh lên (Screenshot / Hình ảnh bài tập)</label>
+                        <input type="file" id="image-input" accept="image/*" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                    </div>
+                    <div class="flex space-x-3">
+                        <button type="submit" id="submit-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition font-medium">Đăng Bài Tập</button>
+                        <button type="button" id="cancel-edit-btn" onclick="resetForm()" class="hidden w-1/3 bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 transition font-medium">Hủy</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Danh sách bài tập đã đăng -->
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">Danh Sách Bài Tập Đã Nộp</h3>
+                <div id="assignments-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Dữ liệu sẽ được render bằng JavaScript -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4 mt-auto">
+        <p>&copy; 2026 Quản lý bài tập nhóm. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript xử lý logic -->
+    <script>
+        // Chuyển đổi giữa các tab
+        function switchTab(tabName) {
+            const membersSection = document.getElementById('tab-members');
+            const assignmentsSection = document.getElementById('tab-assignments');
+            const btnMembers = document.getElementById('btn-members');
+            const btnAssignments = document.getElementById('btn-assignments');
+
+            if (tabName === 'members') {
+                membersSection.classList.remove('hidden');
+                assignmentsSection.classList.add('hidden');
+                btnMembers.classList.add('bg-indigo-700');
+                btnAssignments.classList.remove('bg-indigo-700');
+            } else {
+                assignmentsSection.classList.remove('hidden');
+                membersSection.classList.add('hidden');
+                btnAssignments.classList.add('bg-indigo-700');
+                btnMembers.classList.remove('bg-indigo-700');
+            }
+        }
+
+        // Quản lý dữ liệu bài tập trong LocalStorage
+        let assignments = JSON.parse(localStorage.getItem('assignments')) || [];
+
+        function saveToLocalStorage() {
+            localStorage.setItem('assignments', JSON.stringify(assignments));
+        }
+
+        // Render danh sách bài tập ra giao diện
+        function renderAssignments() {
+            const listContainer = document.getElementById('assignments-list');
+            listContainer.innerHTML = '';
+
+            if (assignments.length === 0) {
+                listContainer.innerHTML = '<p class="text-gray-500 col-span-2 text-center">Chưa có bài tập nào được đăng tải.</p>';
+                return;
+            }
+
+            assignments.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'bg-white p-6 rounded-xl shadow-md flex flex-col justify-between space-y-4';
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h4 class="text-xl font-bold text-gray-800">${item.title}</h4>
+                            <span class="text-xs bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-full font-medium">Bởi: ${item.author}</span>
+                        </div>
+                        <p class="text-gray-600 mt-2 text-sm">${item.description}</p>
+                    </div>
+                    ${item.image ? `<div class="mt-2"><img src="${item.image}" alt="Bài tập" class="w-full h-48 object-cover rounded-md border"></div>` : ''}
+                    <div class="flex justify-end space-x-2 pt-2 border-t">
+                        <button onclick="editAssignment(${index})" class="px-3 py-1 bg-amber-500 text-white text-sm rounded hover:bg-amber-600 transition">Chỉnh sửa</button>
+                        <button onclick="deleteAssignment(${index})" class="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 transition">Xóa</button>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        // Xử lý Thêm / Cập nhật bài tập
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const description = document.getElementById('description').value;
+            const imageInput = document.getElementById('image-input');
+            const editIndex = document.getElementById('edit-index').value;
+
+            const processData = (imageUrl) => {
+                const newItem = {
+                    title,
+                    author,
+                    description,
+                    image: imageUrl || (editIndex !== '' ? assignments[editIndex].image : '')
+                };
+
+                if (editIndex === '') {
+                    assignments.push(newItem);
+                } else {
+                    assignments[editIndex] = newItem;
+                }
+
+                saveToLocalStorage();
+                renderAssignments();
+                resetForm();
+            };
+
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    processData(e.target.result);
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                processData(null);
+            }
+        }
+
+        // Đưa dữ liệu vào form để chỉnh sửa
+        function editAssignment(index) {
+            const item = assignments[index];
+            document.getElementById('title').value = item.title;
+            document.getElementById('author').value = item.author;
+            document.getElementById('description').value = item.description;
+            document.getElementById('edit-index').value = index;
+
+            document.getElementById('form-title').innerText = 'Chỉnh Sửa Bài Tập';
+            document.getElementById('submit-btn').innerText = 'Cập Nhật Bài Tập';
+            document.getElementById('cancel-edit-btn').classList.remove('hidden');
+
+            window.scrollTo({ top: 400, behavior: 'smooth' });
+        }
+
+        // Xóa bài tập
+        function deleteAssignment(index) {
+            if (confirm('Bạn có chắc chắn muốn xóa bài tập này không?')) {
+                assignments.splice(index, 1);
+                saveToLocalStorage();
+                renderAssignments();
+            }
+        }
+
+        // Reset form về trạng thái thêm mới
+        function resetForm() {
+            document.getElementById('assignment-form').reset();
+            document.getElementById('edit-index').value = '';
+            document.getElementById('form-title').innerText = 'Thêm Bài Tập Mới';
+            document.getElementById('submit-btn').innerText = 'Đăng Bài Tập';
+            document.getElementById('cancel-edit-btn').classList.add('hidden');
+        }
+
+        // Khởi chạy khi tải trang
+        renderAssignments();
+    </script>
+</body>
+</html>
